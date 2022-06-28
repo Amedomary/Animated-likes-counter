@@ -3,23 +3,25 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.LikeButtonAnimated = void 0;
+exports.default = exports.LikeButtonAnimated = void 0;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
-var _Skeleton = require("@components/common/Skeletons/Skeleton");
+var _Icon = _interopRequireDefault(require("./Icon"));
 
-var _SvgIcon = require("@components/common/SvgIcon");
-
-var _utils = require("@utils/utils");
+var _utils = require("./utils");
 
 var _react = _interopRequireWildcard(require("react"));
 
 var _reactSpring = require("react-spring");
 
+require("./LikeButtonAnimated.css");
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -90,14 +92,14 @@ const HexSpringSVG = _ref => {
     width: "50",
     height: "100",
     viewBox: "0 0 50 100",
-    fill: "var(--c-accent)"
+    fill: "var(--lba-c-accent)"
   }, /*#__PURE__*/_react.default.createElement("g", {
     id: "circle".concat(id),
     transform: "translate(-7, -6)",
     opacity: "0"
   }, /*#__PURE__*/_react.default.createElement("g", null, /*#__PURE__*/_react.default.createElement("path", {
     d: "M4.49737 2H11.5026L15 8L11.5026 14H4.49737L1 8L4.49737 2Z",
-    fill: "var(--bg-level-1)"
+    fill: "var(--lba-c-bg)"
   }), /*#__PURE__*/_react.default.createElement("path", {
     fillRule: "evenodd",
     clipRule: "evenodd" // eslint-disable-next-line max-len
@@ -138,12 +140,11 @@ const HexSpringSVG = _ref => {
 const LikeButtonAnimated = _ref2 => {
   let {
     disabledButton,
-    bem,
-    bemIcon,
     handleLike,
     isLoading,
+    style,
     likes,
-    bemCount
+    classes
   } = _ref2;
   const [list, setList] = (0, _react.useState)([]);
   const [countStyle, setCountStyle] = (0, _react.useState)({});
@@ -157,7 +158,7 @@ const LikeButtonAnimated = _ref2 => {
     setTimeout(() => {
       setCountStyle({
         transform: 'translateY(-1px)',
-        color: 'var(--c-accent)'
+        color: style.countTextActive
       });
       handleLike();
       setTimeout(() => {
@@ -176,25 +177,20 @@ const LikeButtonAnimated = _ref2 => {
   return /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     disabled: disabledButton,
-    className: bem,
-    onClick: onHandleClick,
-    style: {
-      position: 'relative'
-    }
+    className: "lba-root ".concat((classes === null || classes === void 0 ? void 0 : classes.root) || ''),
+    onClick: onHandleClick
   }, list.length > 0 && list.map(e => /*#__PURE__*/_react.default.createElement(_react.default.Fragment, {
     key: e
   }, /*#__PURE__*/_react.default.createElement(HexSpringSVG, {
     id: e
-  }), /*#__PURE__*/_react.default.createElement(NumberSpring, null))), /*#__PURE__*/_react.default.createElement(_SvgIcon.SvgIcon, {
-    type: "like",
-    className: bemIcon
-  }), /*#__PURE__*/_react.default.createElement(_Skeleton.TernaryForSkeleton, {
-    isLoading: isLoading,
-    width: "2rem"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
-    className: bemCount,
+  }), /*#__PURE__*/_react.default.createElement(NumberSpring, null))), /*#__PURE__*/_react.default.createElement(_Icon.default, {
+    className: "lba-icon"
+  }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+    className: classes === null || classes === void 0 ? void 0 : classes.countText,
     style: countStyle
-  }, likes))));
+  }, likes)));
 };
 
 exports.LikeButtonAnimated = LikeButtonAnimated;
+var _default = LikeButtonAnimated;
+exports.default = _default;

@@ -1,0 +1,33 @@
+.lba-root {
+  user-select: none;
+  min-width: max-content;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.lba-icon {
+  margin-right: 8px;
+}
+
+.lba-root:hover .lba-icon stroke,
+.lba-root:hover .lba-icon path {
+  fill: var(--lba-c-icon-hover);
+}
+
+.lba-root:active .lba-icon stroke,
+.lba-root:active .lba-icon path {
+  fill: var(--lba-c-accent);
+}
+
+.lba-root:disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.lba-root:disabled .lba-icon {
+  opacity: 0.6;
+}

@@ -1,3 +1,3 @@
-import Button from './components/Button';
+import LikeButtonAnimated from './components/LikeButtonAnimated';
 
-export { Button };
+export { LikeButtonAnimated };

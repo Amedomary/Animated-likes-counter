@@ -1,0 +1,71 @@
+:root {
+  --lba-c-icon-normal: rgb(95, 95, 95);
+  --lba-c-icon-hover: rgb(143, 143, 143);
+  --lba-c-accent: yellow;
+  --lba-c-bg: #282c34;
+}
+
+.lba-root {
+  user-select: none;
+  min-width: max-content;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.lba-icon {
+  margin-right: 8px;
+}
+
+.lba-root:hover .lba-icon stroke,
+.lba-root:hover .lba-icon path {
+  fill: var(--lba-c-icon-hover);
+}
+
+.lba-root:active .lba-icon stroke,
+.lba-root:active .lba-icon path {
+  fill: var(--lba-c-accent);
+}
+
+/* &__numbered-btn {
+  @include button-to-icon;
+  padding: 1rem;
+  user-select: none;
+  min-width: max-content;
+
+  &:hover #{$root}__numbered-btn-icon {
+    &--active {
+      & path {
+        fill: var(--text-level-2);
+      }
+
+      & circle {
+        stroke: var(--text-level-2);
+      }
+    }
+  }
+
+  &:active #{$root}__numbered-btn-icon {
+    &--active {
+      & path {
+        fill: var(--c-accent);
+      }
+
+      & circle {
+        stroke: var(--c-accent);
+      }
+    }
+  }
+
+  &--type_like {
+    &:disabled {
+      cursor: not-allowed;
+
+      & .i-post__numbered-btn-icon {
+        opacity: 0.6;
+      }
+    }
+  } */

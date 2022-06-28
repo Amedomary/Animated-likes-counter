@@ -1,8 +1,9 @@
-import { TernaryForSkeleton } from '@components/common/Skeletons/Skeleton';
-import { SvgIcon } from '@components/common/SvgIcon';
-import { randomNumber } from '@utils/utils';
+// import { TernaryForSkeleton } from '@components/common/Skeletons/Skeleton';
+import LikeIcon from './Icon';
+import { randomNumber } from './utils';
 import React, { useRef, useState } from 'react';
 import { animated, useTransition } from 'react-spring';
+import './LikeButtonAnimated.css';
 
 const NumberSpring = () => {
   const rangeMass = [0.3, 2, 4.5, 6];
@@ -47,24 +48,24 @@ const HexSpringSVG = ({ id }) => {
       width="50"
       height="100"
       viewBox="0 0 50 100"
-      fill="var(--c-accent)"
+      fill="var(--lba-c-accent)"
     >
       <g id={`circle${id}`} transform="translate(-7, -6)" opacity="0">
         <g>
-          <path d="M4.49737 2H11.5026L15 8L11.5026 14H4.49737L1 8L4.49737 2Z" fill="var(--bg-level-1)" />
+          <path d="M4.49737 2H11.5026L15 8L11.5026 14H4.49737L1 8L4.49737 2Z" fill="var(--lba-c-bg)" />
 
           <path
             fillRule="evenodd"
             clipRule="evenodd"
             // eslint-disable-next-line max-len
             d="M4.49737 2H11.5026L15 8L11.5026 14H4.49737L1 8L4.49737 2ZM5.18481 3.16129L2.36435 8L5.18481 12.8387H10.8152L13.6356 8L10.8152 3.16129H5.18481Z"
-            fill="var(--c-accent)"
+            fill="var(--lba-c-accent)"
           />
           <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M9.7424 4.47657L11.3847 7.32116L10.379 7.90181L8.73669 5.05722L9.7424 4.47657Z"
-            fill="var(--c-accent)"
+            fill="var(--lba-c-accent)"
           />
 
           <animateTransform
@@ -101,7 +102,7 @@ const HexSpringSVG = ({ id }) => {
   );
 };
 
-export const LikeButtonAnimated = ({ disabledButton, bem, bemIcon, handleLike, isLoading, likes, bemCount }) => {
+export const LikeButtonAnimated = ({ disabledButton, handleLike, style, likes, classes }) => {
   const [list, setList] = useState([]);
   const [countStyle, setCountStyle] = useState({});
   const durationCancel = 5000;
@@ -115,7 +116,7 @@ export const LikeButtonAnimated = ({ disabledButton, bem, bemIcon, handleLike, i
     setTimeout(() => {
       setCountStyle({
         transform: 'translateY(-1px)',
-        color: 'var(--c-accent)',
+        color: style.countTextActive,
       });
       handleLike();
 
@@ -137,9 +138,8 @@ export const LikeButtonAnimated = ({ disabledButton, bem, bemIcon, handleLike, i
     <button
       type="button"
       disabled={disabledButton}
-      className={bem}
+      className={`lba-root ${classes?.root || ''}`}
       onClick={onHandleClick}
-      style={{ position: 'relative' }}
     >
       {list.length > 0 &&
         list.map((e) => (
@@ -149,14 +149,16 @@ export const LikeButtonAnimated = ({ disabledButton, bem, bemIcon, handleLike, i
           </React.Fragment>
         ))}
 
-      <SvgIcon type="like" className={bemIcon} />
-      <TernaryForSkeleton isLoading={isLoading} width="2rem">
-        <div>
-          <span className={bemCount} style={countStyle}>
-            {likes}
-          </span>
-        </div>
-      </TernaryForSkeleton>
+      <LikeIcon className={`lba-icon ${classes?.icon || ''}`} />
+
+      <div>
+        <span className={classes?.countText || ''} style={countStyle}>
+          {likes}
+        </span>
+      </div>
     </button>
   );
 };
+
+
+export default LikeButtonAnimated;
