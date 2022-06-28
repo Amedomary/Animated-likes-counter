@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import './App.css';
+import { useState } from 'react';
 import { LikeButtonAnimated } from './lib/index';
 
 function App() {
@@ -10,14 +9,6 @@ function App() {
       <header className="App-header">
         <LikeButtonAnimated
           disabledButton={false}
-          classes={{
-            root: 'root',
-            icon: 'icon',
-            countText: 'text',
-          }}
-          style={{
-            countTextActive: 'gray',
-          }}
           handleLike={() => setCount((a) => a + 1)}
           likes={count}
         />

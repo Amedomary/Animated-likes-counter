@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const LikeIcon = _ref => {
   let {
     style = {},
-    fill = 'var(--lba-c-icon-normal)',
+    fill = 'var(--lba-c-icon-idle)',
     width = '16',
     height = '16',
     className = '',

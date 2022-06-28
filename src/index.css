@@ -1,5 +1,5 @@
 :root {
-  --lba-c-icon-normal: rgb(95, 95, 95);
+  --lba-c-icon-idle: rgb(95, 95, 95);
   --lba-c-icon-hover: rgb(143, 143, 143);
   --lba-c-accent: yellow;
   --lba-c-bg: #282c34;
@@ -17,4 +17,23 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+button {
+  color: #fff;
 }

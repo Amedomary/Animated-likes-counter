@@ -5,7 +5,7 @@ import React, { useRef, useState } from 'react';
 import { animated, useTransition } from 'react-spring';
 import './LikeButtonAnimated.css';
 
-const NumberSpring = () => {
+const NumberSpring = ({ projectile }) => {
   const rangeMass = [0.3, 2, 4.5, 6];
   const [show, set] = useState(true);
   const { current: elementMass } = useRef(randomNumber(rangeMass[0], rangeMass[3]));
@@ -27,7 +27,7 @@ const NumberSpring = () => {
         <animated.span
           style={{ color: 'var(--text-level-2)', fontWeight: weight, position: 'absolute', left: '27px', ...styles }}
         >
-          +1
+          {projectile}
         </animated.span>
       )
   );
@@ -102,7 +102,7 @@ const HexSpringSVG = ({ id }) => {
   );
 };
 
-export const LikeButtonAnimated = ({ disabledButton, handleLike, style, likes, classes }) => {
+const LikeButtonAnimated = ({ disabledButton, handleLike, projectile, style, likes, classes }) => {
   const [list, setList] = useState([]);
   const [countStyle, setCountStyle] = useState({});
   const durationCancel = 5000;
@@ -145,20 +145,24 @@ export const LikeButtonAnimated = ({ disabledButton, handleLike, style, likes, c
         list.map((e) => (
           <React.Fragment key={e}>
             <HexSpringSVG id={e} />
-            <NumberSpring />
+            <NumberSpring projectile={projectile} />
           </React.Fragment>
         ))}
 
       <LikeIcon className={`lba-icon ${classes?.icon || ''}`} />
 
-      <div>
-        <span className={classes?.countText || ''} style={countStyle}>
-          {likes}
-        </span>
+      <div className={classes?.countText || ''} style={countStyle}>
+        {likes}
       </div>
     </button>
   );
 };
 
+LikeButtonAnimated.defaultProps = {
+  projectile: '+1',
+  style: {
+    countTextActive: 'var(--lba-c-icon-hover)'
+  }
+}
 
 export default LikeButtonAnimated;

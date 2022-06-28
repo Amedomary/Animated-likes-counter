@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.LikeButtonAnimated = void 0;
+exports.default = void 0;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
@@ -29,7 +29,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-const NumberSpring = () => {
+const NumberSpring = _ref => {
+  let {
+    projectile
+  } = _ref;
   const rangeMass = [0.3, 2, 4.5, 6];
   const [show, set] = (0, _react.useState)(true);
   const {
@@ -65,13 +68,13 @@ const NumberSpring = () => {
       position: 'absolute',
       left: '27px'
     }, styles)
-  }, "+1"));
+  }, projectile));
 };
 
-const HexSpringSVG = _ref => {
+const HexSpringSVG = _ref2 => {
   let {
     id
-  } = _ref;
+  } = _ref2;
   const aConfig = {
     dur: '1s',
     repeatCount: '1'
@@ -105,12 +108,12 @@ const HexSpringSVG = _ref => {
     clipRule: "evenodd" // eslint-disable-next-line max-len
     ,
     d: "M4.49737 2H11.5026L15 8L11.5026 14H4.49737L1 8L4.49737 2ZM5.18481 3.16129L2.36435 8L5.18481 12.8387H10.8152L13.6356 8L10.8152 3.16129H5.18481Z",
-    fill: "var(--c-accent)"
+    fill: "var(--lba-c-accent)"
   }), /*#__PURE__*/_react.default.createElement("path", {
     fillRule: "evenodd",
     clipRule: "evenodd",
     d: "M9.7424 4.47657L11.3847 7.32116L10.379 7.90181L8.73669 5.05722L9.7424 4.47657Z",
-    fill: "var(--c-accent)"
+    fill: "var(--lba-c-accent)"
   }), /*#__PURE__*/_react.default.createElement("animateTransform", {
     attributeName: "transform",
     type: "rotate",
@@ -137,15 +140,15 @@ const HexSpringSVG = _ref => {
   }));
 };
 
-const LikeButtonAnimated = _ref2 => {
+const LikeButtonAnimated = _ref3 => {
   let {
     disabledButton,
     handleLike,
-    isLoading,
+    projectile,
     style,
     likes,
     classes
-  } = _ref2;
+  } = _ref3;
   const [list, setList] = (0, _react.useState)([]);
   const [countStyle, setCountStyle] = (0, _react.useState)({});
   const durationCancel = 5000;
@@ -183,14 +186,21 @@ const LikeButtonAnimated = _ref2 => {
     key: e
   }, /*#__PURE__*/_react.default.createElement(HexSpringSVG, {
     id: e
-  }), /*#__PURE__*/_react.default.createElement(NumberSpring, null))), /*#__PURE__*/_react.default.createElement(_Icon.default, {
-    className: "lba-icon"
-  }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
-    className: classes === null || classes === void 0 ? void 0 : classes.countText,
+  }), /*#__PURE__*/_react.default.createElement(NumberSpring, {
+    projectile: projectile
+  }))), /*#__PURE__*/_react.default.createElement(_Icon.default, {
+    className: "lba-icon ".concat((classes === null || classes === void 0 ? void 0 : classes.icon) || '')
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: (classes === null || classes === void 0 ? void 0 : classes.countText) || '',
     style: countStyle
-  }, likes)));
+  }, likes));
 };
 
-exports.LikeButtonAnimated = LikeButtonAnimated;
+LikeButtonAnimated.defaultProps = {
+  projectile: '+1',
+  style: {
+    countTextActive: 'var(--lba-c-icon-hover)'
+  }
+};
 var _default = LikeButtonAnimated;
 exports.default = _default;

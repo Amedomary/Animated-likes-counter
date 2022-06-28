@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LikeIcon = ({ style = {}, fill = 'var(--lba-c-icon-normal)', width = '16', height = '16', className = '', viewBox = '0 0 16 16' }) => (
+const LikeIcon = ({ style = {}, fill = 'var(--lba-c-icon-idle)', width = '16', height = '16', className = '', viewBox = '0 0 16 16' }) => (
   <svg width={width} style={style} height={height} viewBox={viewBox} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       fillRule="evenodd"
