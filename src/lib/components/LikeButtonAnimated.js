@@ -1,15 +1,14 @@
-// import { TernaryForSkeleton } from '@components/common/Skeletons/Skeleton';
-import LikeIcon from './Icon';
-import { randomNumber } from './utils';
 import React, { useRef, useState } from 'react';
 import { animated, useTransition } from 'react-spring';
+import LikeIcon from './Icon';
 import './LikeButtonAnimated.css';
+import { randomNumber } from './utils';
+
+const rangeMass = [0.3, 2, 4.5, 6];
 
 const NumberSpring = ({ projectile }) => {
-  const rangeMass = [0.3, 2, 4.5, 6];
-  const [show, set] = useState(true);
+  const [show, setShow] = useState(true);
   const { current: elementMass } = useRef(randomNumber(rangeMass[0], rangeMass[3]));
-
   const weight = elementMass > rangeMass[2] ? 'bold' : elementMass < rangeMass[1] ? 'lighter' : 'normal';
 
   const transitions = useTransition(show, {
@@ -18,7 +17,7 @@ const NumberSpring = ({ projectile }) => {
     leave: { opacity: 0 },
     delay: 900,
     config: { mass: elementMass, tension: 210, friction: 20 },
-    onRest: () => set(false),
+    onRest: () => setShow(false),
   });
 
   return transitions(
@@ -130,16 +129,12 @@ const LikeButtonAnimated = ({ disabledButton, handleLike, projectile, style, lik
     }, durationCancel);
   };
 
-  const onHandleClick = () => {
-    onLike();
-  };
-
   return (
     <button
       type="button"
       disabled={disabledButton}
       className={`lba-root ${classes?.root || ''}`}
-      onClick={onHandleClick}
+      onClick={onLike}
     >
       {list.length > 0 &&
         list.map((e) => (
