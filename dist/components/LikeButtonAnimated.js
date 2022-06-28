@@ -7,21 +7,21 @@ exports.default = void 0;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
-var _Icon = _interopRequireDefault(require("./Icon"));
-
-var _utils = require("./utils");
-
 var _react = _interopRequireWildcard(require("react"));
 
 var _reactSpring = require("react-spring");
 
+var _Icon = _interopRequireDefault(require("./Icon"));
+
 require("./LikeButtonAnimated.css");
+
+var _utils = require("./utils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -29,12 +29,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+const rangeMass = [0.3, 2, 4.5, 6];
+
 const NumberSpring = _ref => {
   let {
     projectile
   } = _ref;
-  const rangeMass = [0.3, 2, 4.5, 6];
-  const [show, set] = (0, _react.useState)(true);
+  const [show, setShow] = (0, _react.useState)(true);
   const {
     current: elementMass
   } = (0, _react.useRef)((0, _utils.randomNumber)(rangeMass[0], rangeMass[3]));
@@ -59,7 +60,7 @@ const NumberSpring = _ref => {
       tension: 210,
       friction: 20
     },
-    onRest: () => set(false)
+    onRest: () => setShow(false)
   });
   return transitions((styles, item) => item && /*#__PURE__*/_react.default.createElement(_reactSpring.animated.span, {
     style: _objectSpread({
@@ -173,15 +174,11 @@ const LikeButtonAnimated = _ref3 => {
     }, durationCancel);
   };
 
-  const onHandleClick = () => {
-    onLike();
-  };
-
   return /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     disabled: disabledButton,
     className: "lba-root ".concat((classes === null || classes === void 0 ? void 0 : classes.root) || ''),
-    onClick: onHandleClick
+    onClick: onLike
   }, list.length > 0 && list.map(e => /*#__PURE__*/_react.default.createElement(_react.default.Fragment, {
     key: e
   }, /*#__PURE__*/_react.default.createElement(HexSpringSVG, {
