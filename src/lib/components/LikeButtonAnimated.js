@@ -115,7 +115,7 @@ const LikeButtonAnimated = ({ disabledButton, handleLike, projectile, style, lik
     setTimeout(() => {
       setCountStyle({
         transform: 'translateY(-1px)',
-        color: style.countTextActive,
+        color: style.countTextActiveColor,
       });
       handleLike();
 
@@ -155,8 +155,9 @@ const LikeButtonAnimated = ({ disabledButton, handleLike, projectile, style, lik
 
 LikeButtonAnimated.defaultProps = {
   projectile: '+1',
+  disabledButton: false,
   style: {
-    countTextActive: 'var(--lba-c-icon-hover)'
+    countTextActiveColor: 'var(--lba-c-icon-hover)'
   }
 }
 
