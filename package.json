@@ -2,6 +2,7 @@
   "name": "animated-likes-counter",
   "description": "Likes button counter with svg/css animation for you awesome projects",
   "author": "Amedomary",
+  "homepage": "http://amedomary.ru/Animated-likes-counter/",
   "keywords": [
     "react",
     "components",
@@ -9,7 +10,7 @@
     "animation",
     "likes"
   ],
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
