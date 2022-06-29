@@ -9,7 +9,7 @@
     "animation",
     "likes"
   ],
-  "version": "0.0.8",
+  "version": "0.1.0",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -19,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jawblia/npm-test.git"
+    "url": "git+https://github.com/Amedomary/Animated-likes-counter.git"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",

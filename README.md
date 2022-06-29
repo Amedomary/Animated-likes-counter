@@ -30,14 +30,14 @@ Style
 ```
 
 ### API
-| Props          | Value        | Description                                                            |
-| -------------- | ------------ | ---------------------------------------------------------------------- |
-| disabledButton | boolean      | Makes the button inactive                                              |
-| handleLike     | function     | The like event handler is triggered at the end of the flight animation |
-| projectile     | String / JSX | The jumping element                                                    |
-| likes          | String / JSX | Counter                                                                |
-| style          | object       | Props for customize some element styles some                           |
-| classes        | object       | Props for customize some element classNames some                       |
+| Props          | Value                                                  | Description                                                            |
+| -------------- | ------------------------------------------------------ | ---------------------------------------------------------------------- |
+| disabledButton | boolean                                                | Makes the button inactive                                              |
+| handleLike     | function                                               | The like event handler is triggered at the end of the flight animation |
+| projectile     | String / JSX                                           | The jumping element                                                    |
+| likes          | String / JSX                                           | Counter                                                                |
+| style          | object {countTextActiveColor: String}                  | Props for customize some element styles some                           |
+| classes        | object {root: String, icon: String, countText: String} | Props for customize some element classNames some                       |
 
 
 ## Example
@@ -51,6 +51,8 @@ function App() {
         disabledButton={false}
         handleLike={() => setCount((a) => a + 1)}
         likes={count}
+        projectile='+1'
+        classes={{icon: 'my-class'}}
       />
     </div>
   );
