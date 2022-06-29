@@ -62,4 +62,4 @@ function App() {
 ```
 
 ## Author
-Maksim "Amedomary" Grishin, [Irlix]([https://](https://irlix.com/)) IT Company
+Maksim "Amedomary" Grishin, [Irlix](https://irlix.com/) IT Company
