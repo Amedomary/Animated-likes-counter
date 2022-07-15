@@ -67,7 +67,8 @@ const NumberSpring = _ref => {
       color: 'var(--text-level-2)',
       fontWeight: weight,
       position: 'absolute',
-      left: '27px'
+      left: '27px',
+      whiteSpace: 'nowrap'
     }, styles)
   }, projectile));
 };
