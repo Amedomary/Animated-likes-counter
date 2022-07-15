@@ -24,7 +24,7 @@ const NumberSpring = ({ projectile }) => {
     (styles, item) =>
       item && (
         <animated.span
-          style={{ color: 'var(--text-level-2)', fontWeight: weight, position: 'absolute', left: '27px', ...styles }}
+          style={{ color: 'var(--text-level-2)', fontWeight: weight, position: 'absolute', left: '27px', whiteSpace: 'nowrap', ...styles }}
         >
           {projectile}
         </animated.span>
